@@ -1,0 +1,36 @@
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Remove a rolagem globalmente */
+}
+.bg-white {
+    background-color: white !important;
+  }
+  
+  .p-6 {
+    padding: 1.5rem !important;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem !important;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .w-full {
+    width: 100% !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem !important;
+  }
