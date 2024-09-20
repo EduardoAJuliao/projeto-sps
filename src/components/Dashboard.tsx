@@ -12,8 +12,6 @@ const Dashboard: React.FC = () => {
   }
 
   const handleLogout = () => {
-    // Adicione aqui a lógica para logout, se necessário
-    // Por exemplo, redirecionar para uma tela de login
     router.push("/")
   }
 
