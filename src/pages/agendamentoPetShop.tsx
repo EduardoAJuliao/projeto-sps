@@ -20,8 +20,8 @@ import {
   DialogActions,
   TextField,
 } from "@mui/material";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import WbSunnyIcon from "@mui/icons-material/WbSunny";  // Ícone de sol
+import NightlightIcon from "@mui/icons-material/Nightlight";  // Ícone de lua
 
 interface Agendamento {
   id: number;
@@ -193,7 +193,7 @@ export default function AgendaPetShop() {
                     }}
                   >
                     <Typography variant="h6">
-                      <FontAwesomeIcon icon={faSun} /> Manhã
+                      <WbSunnyIcon /> Manhã
                     </Typography>
                     <Typography variant="subtitle1">
                       {getHorarioPeriodo("manha")}
@@ -219,7 +219,7 @@ export default function AgendaPetShop() {
                     }}
                   >
                     <Typography variant="h6">
-                      <FontAwesomeIcon icon={faSun} /> Tarde
+                      <WbSunnyIcon /> Tarde
                     </Typography>
                     <Typography variant="subtitle1">
                       {getHorarioPeriodo("tarde")}
@@ -245,7 +245,7 @@ export default function AgendaPetShop() {
                     }}
                   >
                     <Typography variant="h6">
-                      <FontAwesomeIcon icon={faMoon} /> Noite
+                      <NightlightIcon /> Noite
                     </Typography>
                     <Typography variant="subtitle1">
                       {getHorarioPeriodo("noite")}
@@ -283,23 +283,18 @@ export default function AgendaPetShop() {
             {selectedAgendamento && (
               <>
                 <Typography variant="h6">{selectedAgendamento.pet}</Typography>
-                <Typography variant="body1">{selectedAgendamento.dono}</Typography>
-                <Typography variant="body2">{selectedAgendamento.servico}</Typography>
-                <TextField
-                  margin="normal"
-                  label="Horário"
-                  defaultValue={selectedAgendamento.horario}
-                  fullWidth
-                />
+                <Typography variant="body1">{selectedAgendamento.servico}</Typography>
               </>
             )}
+            <TextField label="Pet" fullWidth margin="normal" />
+            <TextField label="Dono" fullWidth margin="normal" />
+            <TextField label="Serviço" fullWidth margin="normal" />
+            <TextField label="Horário" fullWidth margin="normal" />
           </DialogContent>
           <DialogActions>
+            <Button onClick={handleClose}>Cancelar</Button>
             <Button onClick={handleClose} color="primary">
-              Cancelar
-            </Button>
-            <Button onClick={() => { /* Lógica para salvar agendamento */ handleClose(); }} color="primary">
-              Confirmar
+              Salvar
             </Button>
           </DialogActions>
         </Dialog>

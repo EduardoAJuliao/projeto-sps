@@ -1,7 +1,7 @@
 import React from "react"
 import { useRouter } from "next/navigation"
 import {Container, Grid, Card, CardContent, Typography, Button, IconButton, Box} from "@mui/material"
-import { Add as AddIcon, List as ListIcon, PowerSettingsNew as PowerSettingsNewIcon } from "@mui/icons-material"
+import { Add as AddIcon, List as ListIcon} from "@mui/icons-material"
 import PetsIcon from '@mui/icons-material/Pets';
 
 const Dashboard: React.FC = () => {
@@ -18,9 +18,6 @@ const Dashboard: React.FC = () => {
   return (
     <Container>
       <Box display="flex" justifyContent="flex-start" mb={2}>
-        <IconButton onClick={handleLogout} color="inherit">
-          <PowerSettingsNewIcon />
-        </IconButton>
       </Box>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} md={6}>

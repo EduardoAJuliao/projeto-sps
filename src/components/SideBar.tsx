@@ -28,7 +28,9 @@ const Sidebar = () => {
           alignItems: 'center',
           padding: '16px',
           gap: '16px',
+          cursor: 'pointer' // Adiciona o ícone de "mão" ao passar o mouse
         }}
+        onClick={() => handleNavigation('/')} // Redireciona para o login
       >
         <img src="/images/sps_logo.png" alt="Logo" style={{ width: 32, height: 32 }} />
         <Typography variant="h6" noWrap>
@@ -61,8 +63,7 @@ const Sidebar = () => {
           </ListItemIcon>
           <ListItemText primary="Pet Shop" />
         </ListItem>
-        <Box sx={{ mt: 2 }}>
-        </Box>
+        <Box sx={{ mt: 2 }}></Box>
       </List>
       
     </Drawer>
