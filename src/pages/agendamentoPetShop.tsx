@@ -20,8 +20,8 @@ import {
   DialogActions,
   TextField,
 } from "@mui/material";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";  // Ícone de sol
-import NightlightIcon from "@mui/icons-material/Nightlight";  // Ícone de lua
+import WbSunnyIcon from "@mui/icons-material/WbSunny"; // Ícone de sol
+import NightlightIcon from "@mui/icons-material/Nightlight"; // Ícone de lua
 
 interface Agendamento {
   id: number;
@@ -73,6 +73,7 @@ const handleRemove = (id: number) => {
 export default function AgendaPetShop() {
   const [temaEscuro, setTemaEscuro] = useState(true);
   const [open, setOpen] = useState(false);
+  const [isNovoAgendamento, setIsNovoAgendamento] = useState(false); // Novo estado para "Novo Agendamento"
   const [selectedAgendamento, setSelectedAgendamento] = useState<Agendamento | null>(null);
 
   const agendamentosManha = filtrarAgendamentos(agendamentos, "manha");
@@ -86,6 +87,7 @@ export default function AgendaPetShop() {
         style={{ marginBottom: "16px", width: "100%" }}
         onClick={() => {
           setSelectedAgendamento(agendamento);
+          setIsNovoAgendamento(false); // Para distinguir entre edição e novo agendamento
           setOpen(true);
         }}
       >
@@ -132,6 +134,12 @@ export default function AgendaPetShop() {
   const handleClose = () => {
     setOpen(false);
     setSelectedAgendamento(null);
+  };
+
+  const abrirNovoAgendamento = () => {
+    setSelectedAgendamento(null); // Nenhum agendamento selecionado
+    setIsNovoAgendamento(true); // Define como novo agendamento
+    setOpen(true); // Abre o modal
   };
 
   return (
@@ -270,31 +278,46 @@ export default function AgendaPetShop() {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => alert("Redirecionando para novo agendamento...")}
+            onClick={abrirNovoAgendamento} // Chama a função para abrir o modal de "Novo Agendamento"
           >
             NOVO AGENDAMENTO
           </Button>
         </Box>
 
-        {/* Modal para agendar */}
         <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Marcar Agendamento</DialogTitle>
+          <DialogTitle>{isNovoAgendamento ? "Novo Agendamento" : "Editar Agendamento"}</DialogTitle>
           <DialogContent>
-            {selectedAgendamento && (
-              <>
-                <Typography variant="h6">{selectedAgendamento.pet}</Typography>
-                <Typography variant="body1">{selectedAgendamento.servico}</Typography>
-              </>
-            )}
-            <TextField label="Pet" fullWidth margin="normal" />
-            <TextField label="Dono" fullWidth margin="normal" />
-            <TextField label="Serviço" fullWidth margin="normal" />
-            <TextField label="Horário" fullWidth margin="normal" />
+            <TextField
+              label="Nome do Pet"
+              defaultValue={selectedAgendamento?.pet}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Nome do Dono"
+              defaultValue={selectedAgendamento?.dono}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Serviço"
+              defaultValue={selectedAgendamento?.servico}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Horário"
+              defaultValue={selectedAgendamento?.horario}
+              fullWidth
+              margin="normal"
+            />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancelar</Button>
+            <Button onClick={handleClose} color="secondary">
+              Cancelar
+            </Button>
             <Button onClick={handleClose} color="primary">
-              Salvar
+              {isNovoAgendamento ? "Salvar" : "Atualizar"}
             </Button>
           </DialogActions>
         </Dialog>
