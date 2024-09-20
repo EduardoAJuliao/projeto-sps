@@ -1,0 +1,95 @@
+import React from "react"
+import { useRouter } from "next/navigation"
+import {
+  Container, Grid, Card, CardContent, Typography, Button, IconButton,
+  Box
+} from "@mui/material"
+import { Add as AddIcon, List as ListIcon, PowerSettingsNew as PowerSettingsNewIcon } from "@mui/icons-material"
+
+const Dashboard: React.FC = () => {
+  const router = useRouter()
+
+  const handleNavigateTo = (path: string) => {
+    router.push(path)
+  }
+
+  const handleLogout = () => {
+    // Adicione aqui a lógica para logout, se necessário
+    // Por exemplo, redirecionar para uma tela de login
+    router.push("/")
+  }
+
+  return (
+    <Container>
+      <Box display="flex" justifyContent="flex-start" mb={2}>
+        <IconButton onClick={handleLogout} color="inherit">
+          <PowerSettingsNewIcon />
+        </IconButton>
+      </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="div" mb={2}>
+                Cadastrar Parceiro
+              </Typography>
+              <Typography variant="body2" mb={2}>
+                Crie novos parceiros de negócios através deste formulário.
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<AddIcon />}
+                onClick={() => handleNavigateTo("/addParceiro")}
+              >
+                Ir para Cadastro
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="div" mb={2}>
+                Pet Shop
+              </Typography>
+              <Typography variant="body2" mb={2}>
+                Agende o horario do seu pet aqui.
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<AddIcon />}
+                onClick={() => handleNavigateTo("/agendamentoPetShop")}
+              >
+                Agendamento
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="div" mb={2}>
+                Dados do Produto X Cadastro do Produto
+              </Typography>
+              <Typography variant="body2" mb={2}>
+                Visualize e gerencie os dados dO produto.
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<ListIcon />}
+                onClick={() => handleNavigateTo("/DadosProdutos")}
+              >
+                Ir para Dados
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
+  )
+}
+
+export default Dashboard

@@ -1,18 +1,14 @@
-// src/App.tsx
-"use client";
-
+// pages/_app.tsx
 import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import theme from './theme';
-import HomePage from './pages';
+import theme from '../src/theme';
+import '../styles/global.css';
 
-const App: React.FC = () => {
+function MyApp({ Component, pageProps }: any) {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <HomePage />
+      <Component {...pageProps} />
     </ThemeProvider>
   );
-};
+}
 
-export default App;
+export default MyApp;
