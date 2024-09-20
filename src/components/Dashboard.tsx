@@ -1,10 +1,8 @@
 import React from "react"
 import { useRouter } from "next/navigation"
-import {
-  Container, Grid, Card, CardContent, Typography, Button, IconButton,
-  Box
-} from "@mui/material"
+import {Container, Grid, Card, CardContent, Typography, Button, IconButton, Box} from "@mui/material"
 import { Add as AddIcon, List as ListIcon, PowerSettingsNew as PowerSettingsNewIcon } from "@mui/icons-material"
+import PetsIcon from '@mui/icons-material/Pets';
 
 const Dashboard: React.FC = () => {
   const router = useRouter()
@@ -59,7 +57,7 @@ const Dashboard: React.FC = () => {
               <Button
                 variant="contained"
                 color="primary"
-                startIcon={<AddIcon />}
+                startIcon={<PetsIcon />}
                 onClick={() => handleNavigateTo("/agendamentoPetShop")}
               >
                 Agendamento

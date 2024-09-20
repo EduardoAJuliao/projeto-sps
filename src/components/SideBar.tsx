@@ -2,6 +2,7 @@ import React from "react"
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, Box } from "@mui/material"
 import HomeIcon from '@mui/icons-material/Home'
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import PetsIcon from '@mui/icons-material/Pets';
 import AddIcon from '@mui/icons-material/Add'
 import { useRouter } from 'next/router'
 
@@ -53,6 +54,12 @@ const Sidebar = () => {
             <AddIcon />
           </ListItemIcon>
           <ListItemText primary="Produtos" />
+        </ListItem>
+        <ListItem button onClick={() => handleNavigation('/agendamentoPetShop')}>
+          <ListItemIcon sx={{ color: '#fff' }}>
+            <PetsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Pet Shop" />
         </ListItem>
         <Box sx={{ mt: 2 }}>
         </Box>
