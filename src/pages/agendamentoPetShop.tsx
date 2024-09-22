@@ -18,8 +18,6 @@ import {
   IconButton,
   TextField,
 } from "@mui/material";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import NightlightIcon from "@mui/icons-material/Nightlight";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -43,8 +41,8 @@ interface Agendamento {
   servico: string;
   horario: string;
 }
-
 const agendamentos: Agendamento[] = [
+
   {
     id: 1,
     pet: "Max",
@@ -167,7 +165,7 @@ export default function AgendaPetShop() {
               style={{
                 flexShrink: 0,
                 marginRight: "16px",
-                fontSize: "0.9rem", // Diminuindo o tamanho da fonte
+                fontSize: "0.9rem", // Diminui fonte
                 fontFamily: "Inter, sans-serif", // Aplicando a fonte Inter
               }}
             >
@@ -185,7 +183,7 @@ export default function AgendaPetShop() {
                 fontWeight="bold"
                 style={{
                   color: "#FFFFFF",
-                  fontSize: "0.9rem", // Diminuindo o tamanho da fonte
+                  fontSize: "0.9rem", // Diminui fonte
                   fontFamily: "Inter, sans-serif", // Aplicando a fonte Inter
                 }}
               >
@@ -197,7 +195,7 @@ export default function AgendaPetShop() {
                 style={{
                   color: "#888",
                   marginLeft: "8px",
-                  fontSize: "0.9rem", // Diminuindo o tamanho da fonte
+                  fontSize: "0.9rem", // Diminui fonte
                   fontFamily: "Inter, sans-serif", // Aplicando a fonte Inter
                 }}
               >
@@ -212,7 +210,7 @@ export default function AgendaPetShop() {
                 fontWeight="bold"
                 style={{
                   color: "#888",
-                  fontSize: "0.9rem", // Diminuindo o tamanho da fonte
+                  fontSize: "0.9rem", // Diminui fonte
                   fontFamily: "Inter, sans-serif", // Aplicando a fonte Inter
                 }}
               >
@@ -223,7 +221,7 @@ export default function AgendaPetShop() {
               variant="text"
               color="inherit"
               style={{
-                fontSize: "0.9rem", // Diminuindo o tamanho da fonte do botão
+                fontSize: "0.9rem", // Diminui o tamanho da fonte do botão
                 fontFamily: "Inter, sans-serif", // Aplicando a fonte Inter ao botão
                 color: "#888",
               }}
@@ -289,7 +287,7 @@ export default function AgendaPetShop() {
                         <img
                           src={calendarIcon}
                           alt="Calendário"
-                          style={{ width: "30px" }} // Ajuste o tamanho conforme necessário
+                          style={{ width: "30px" }} // Ajuste o tamanho da imagem
                         />
                       </IconButton>
                     ),
