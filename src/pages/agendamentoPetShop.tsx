@@ -64,7 +64,7 @@ const agendamentos: Agendamento[] = [
     pet: "Rocky",
     dono: "Luiz",
     servico: "Treinamento",
-    horario: "18:00",
+    horario: "19:25",
   },
 ];
 
@@ -90,10 +90,10 @@ const getHorarioPeriodo = (periodo: string): JSX.Element => {
       horario = "06h-12h";
       break;
     case "tarde":
-      horario = "12h-18h";
+      horario = "13h-18h";
       break;
     case "noite":
-      horario = "18h-06h";
+      horario = "19h-21h";
       break;
     default:
       horario = "";
@@ -327,12 +327,24 @@ export default function AgendaPetShop() {
             <Card style={{ width: "100%" }}>
               <CardHeader
                 title={
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                      src={manhaIcon}
-                      alt="Manhã"
-                      style={{ width: "24px", marginRight: "8px" }}
-                    />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      width: "100%",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={tardeIcon}
+                        alt="Manhã"
+                        style={{ width: "24px", marginRight: "8px" }}
+                      />
+                      <Typography variant="h6" fontWeight="bold">
+                        Manhã
+                      </Typography>
+                    </div>
                     {getHorarioPeriodo("manha")}
                   </div>
                 }
@@ -347,12 +359,24 @@ export default function AgendaPetShop() {
             <Card style={{ width: "100%" }}>
               <CardHeader
                 title={
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                      src={tardeIcon}
-                      alt="Tarde"
-                      style={{ width: "24px", marginRight: "8px" }}
-                    />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      width: "100%",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={manhaIcon}
+                        alt="Tarde"
+                        style={{ width: "24px", marginRight: "8px" }}
+                      />
+                      <Typography variant="h6" fontWeight="bold">
+                        Tarde
+                      </Typography>
+                    </div>
                     {getHorarioPeriodo("tarde")}
                   </div>
                 }
@@ -367,12 +391,24 @@ export default function AgendaPetShop() {
             <Card style={{ width: "100%" }}>
               <CardHeader
                 title={
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                      src={noiteIcon}
-                      alt="Noite"
-                      style={{ width: "24px", marginRight: "8px" }}
-                    />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      width: "100%",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={noiteIcon}
+                        alt="Noite"
+                        style={{ width: "24px", marginRight: "8px" }}
+                      />
+                      <Typography variant="h6" fontWeight="bold">
+                        Noite
+                      </Typography>
+                    </div>
                     {getHorarioPeriodo("noite")}
                   </div>
                 }
