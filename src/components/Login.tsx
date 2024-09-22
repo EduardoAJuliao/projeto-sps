@@ -23,7 +23,7 @@ const Login: React.FC<LoginProps> = ({ title, backgroundImage }) => {
     };
   }, []);
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     if (!username || !password) {
@@ -31,48 +31,13 @@ const Login: React.FC<LoginProps> = ({ title, backgroundImage }) => {
       return;
     }
 
-    sessionStorage.setItem('token', '');
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Usuário ou senha inválidos.');
-      }
-
-      const data = await response.json();
-
-      if (username === 'ConfigSPS') {
-        const check = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/conf/checkConfigLogin`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-
-        const checkData = await check.json();
-
-        if (checkData.isConfigLogin) {
-          sessionStorage.setItem('token', 'config');
-          router.push('/configsps');
-          return;
-        }
-      }
-
-      setShowWelcome(true);
+    if (username === 'eduardo.augusto' && password === '1234') {
+      setShowWelcome(false);
       setTimeout(() => {
         router.push('/dashboard');
-      }, 1000);
-
-    } catch (error) {
-      setError((error as Error).message);
+      });
+    } else {
+      setError('Usuário ou senha inválidos.');
     }
   };
 
@@ -104,7 +69,7 @@ const Login: React.FC<LoginProps> = ({ title, backgroundImage }) => {
           left: 0,
           width: '100%',
           height: '100%',
-          bgcolor: 'rgba(0, 0, 128, 0.2)', // Reduzi a opacidade do azul
+          bgcolor: 'rgba(0, 0, 128, 0.2)', // Reduz a opacidade do azul
           backdropFilter: 'blur(8px)',
           zIndex: 0,
           transition: 'opacity 2s ease-in-out',
@@ -146,7 +111,7 @@ const Login: React.FC<LoginProps> = ({ title, backgroundImage }) => {
               fontFamily: '"Roboto", sans-serif',
               fontWeight: 700,
               color: 'primary.main',
-              textShadow: '1px 1px 2px rgba(0, 0, 128, 0.3)', // Reduzi a sombra do texto
+              textShadow: '1px 1px 2px rgba(0, 0, 128, 0.3)', // Reduz a sombra do texto
               background: 'linear-gradient(45deg, rgba(0, 0, 128, 0.3), rgba(255, 255, 255, 0.2))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -207,13 +172,13 @@ const Login: React.FC<LoginProps> = ({ title, backgroundImage }) => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            bgcolor="rgba(30, 58, 138, 0.5)" // Ajustado para menor intensidade
+            bgcolor="rgba(30, 58, 138, 0.5)"
             zIndex={1200}
-            sx={{ transition: 'opacity 1s ease-in-out' }}
+            sx={{
+              transition: 'opacity 1s ease-in-out',
+              animation: 'fadeInScale 1s ease-in-out', // Adiciona a animação definida no CSS
+            }}
           >
-            <Typography variant="h1" color="white">
-              Bem-vindo!
-            </Typography>
           </Box>
         )}
       </Box>
